@@ -4,11 +4,11 @@ steps:
     if: build.message =~ /.*fuck.*/
 
   - label: ":construction_worker: Build"
-    command: echo "Build the rocket"
+    command: echo "Build the rocket" > somefile.txt
     key: build
 
   - label: ":white_check_mark: Test"
-    command: echo "Test the rocket"
+    command: cat somefile.txt
     key: test
     depends_on: build
 
