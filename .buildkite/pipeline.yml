@@ -1,7 +1,7 @@
 steps:
-  # - label: "language check"
-  #   command: echo "Watch your damn launguage!" | buildkite-agent annotate --style "warning"
-  #   if: build.message =~ /.*fuck.*/
+  - label: "language check"
+    command: echo "Watch your damn launguage!" | buildkite-agent annotate --style "warning"
+    if: build.message =~ /.*fuck.*/
 
   - label: ":construction_worker: Build"
     command: echo "Build the rocket"
