@@ -12,6 +12,6 @@ steps:
     key: test
     depends_on: build
 
-  # - label: "Dynamic Last Step"
-  #   command: .buildkite/generate-moar-steps.sh | buildkite-agent pipeline upload
-  #   key: deploy
+  - label: "Dynamic Last Step"
+    command: .buildkite/generate-moar-steps.sh | buildkite-agent pipeline upload
+    key: deploy
