@@ -1,16 +1,17 @@
 steps:
+  - label: "language check"
+    command: echo "Watch your damn launguage!" | buildkite-agent annotate --style "warning"
+    if: build.message =~ /.*fuck.*/
+
   - label: ":construction_worker: Build"
-    command: echo "Build the rocket"
+    command: echo "Build the rocket" > somefile.txt
     key: build
 
   - label: ":white_check_mark: Test"
-    command: echo "Test the rocket"
+    command: cat somefile.txt
     key: test
     depends_on: build
 
-  - label: ":rocket: Deploy"
-    command: |
-      echo "Launch the rocket"
-      cat .buildkite/annotation.md | buildkite-agent annotate --style "success"
+  - label: "Dynamic Last Step"
+    command: .buildkite/generate-moar-steps.sh | buildkite-agent pipeline upload
     key: deploy
-    depends_on: test
